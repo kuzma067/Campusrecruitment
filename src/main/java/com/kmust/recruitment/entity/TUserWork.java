@@ -1,6 +1,8 @@
 package com.kmust.recruitment.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -56,12 +58,14 @@ public class TUserWork {
     @Column(name = "created_user",columnDefinition = "varchar(128) comment '创建人'")
     private String createdUser;
 
+    @CreatedDate
     @Column(name = "created_time",columnDefinition = "datetime comment '创建时间'")
     private Date createdTime;
 
     @Column(name = "modified_user",columnDefinition = "varchar(128) comment '修改人'")
     private String modifiedUser;
 
+    @LastModifiedDate
     @Column(name = "modified_time",columnDefinition = "datetime comment '修改时间'")
     private Date modifiedTime;
 

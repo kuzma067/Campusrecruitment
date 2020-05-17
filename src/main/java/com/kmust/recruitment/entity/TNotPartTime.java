@@ -1,6 +1,7 @@
 package com.kmust.recruitment.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class TNotPartTime {
     @Column(columnDefinition = "varchar(64) comment '审核人员'")
     private String auditor;
 
+    @CreatedDate
     @Column(name = "created_time",columnDefinition = "datetime comment '审核时间'")
     private Date createdTime;
 
