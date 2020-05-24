@@ -1,10 +1,16 @@
 package com.kmust.recruitment.service;
 
 import com.kmust.recruitment.entity.TUserWork;
+import com.kmust.recruitment.vo.ExcelVo;
 
 import java.util.List;
 
 public interface TUserWorkService {
+    /**
+     * Excel导出数据
+     * @return
+     */
+    List<ExcelVo> findExcelVo();
     /**
      * 保存数据
      * @param tUserWork

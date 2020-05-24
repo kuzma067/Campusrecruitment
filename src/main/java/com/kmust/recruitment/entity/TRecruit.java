@@ -68,7 +68,7 @@ public class TRecruit {
     @Column(columnDefinition = "int(11) comment '热度'")
     private Integer heat;
 
-    @Column(columnDefinition = "int(11) comment '状态码（是否通过审核）' default 0")
+    @Column(nullable = false,columnDefinition = "int(11) comment '状态码（是否通过审核）' default 0")
     private Integer state;
 
     @Column(name = "created_user",columnDefinition = "varchar(128) comment '创建人'")

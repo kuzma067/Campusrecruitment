@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+/**
+ * 信息资源数据持久层
+ */
 public interface TInformationResourcesDao extends JpaRepository<TInformationResources,String>, JpaSpecificationExecutor<TInformationResources> {
 
     List<TInformationResources> findAllByOrderByHeatDesc();

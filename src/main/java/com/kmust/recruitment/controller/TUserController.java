@@ -9,9 +9,11 @@ import com.kmust.recruitment.payload.MissPasswordPayload;
 import com.kmust.recruitment.payload.PhoneLoginPayload;
 import com.kmust.recruitment.service.TUserService;
 import com.kmust.recruitment.utils.JsonResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class TUserController extends BaseController{
@@ -40,6 +43,19 @@ public class TUserController extends BaseController{
         return "请登录！";
     }
 
+    /**
+     * 注销功能
+     * @param session
+     * @param sessionStatus
+     * @return
+     */
+    @RequestMapping("/logout")
+    public JsonResult<String> logout(HttpSession session, SessionStatus sessionStatus){
+        log.info(session.getAttribute("username")+"已注销！");
+        session.invalidate();
+        sessionStatus.setComplete();
+        return new JsonResult<>(400,"已注销，请登录！");
+    }
 
     /**
      * 注册
@@ -191,6 +207,8 @@ public class TUserController extends BaseController{
             TUser data = tUserService.phoneLogin(phone);
             session.setAttribute("uid", data.getId());
             session.setAttribute("username", data.getUsername());
+            session.setAttribute("role",data.getIdentity());
+            log.info(session.getAttribute("username")+"已登录！");
             return new JsonResult<>(SUCCESS , data);
         }else{
             JsonResult<TUser> jsonResult = new JsonResult();
@@ -208,6 +226,7 @@ public class TUserController extends BaseController{
      * @param session
      * @return
      */
+
     @RequestMapping("login")
     public JsonResult<TUser> login(@RequestBody LoginPayload payload, HttpSession session) {
         String username = payload.getUsername();
@@ -216,6 +235,8 @@ public class TUserController extends BaseController{
         TUser data = tUserService.login(username, password);
         session.setAttribute("uid", data.getId());
         session.setAttribute("username", data.getUsername());
+        session.setAttribute("role",data.getIdentity());
+        log.info(session.getAttribute("username")+"已登录！");
         return new JsonResult<>(SUCCESS , data);
     }
 

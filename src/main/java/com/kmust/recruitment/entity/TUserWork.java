@@ -43,8 +43,8 @@ public class TUserWork {
     @Column(name = "expected_position",columnDefinition = "varchar(64) comment '期望的职位'")
     private String expectedPosition;
 
-    @Column(name = "is_triple_agreement",columnDefinition = "int(11) comment '是否签署三方协议'")
-    private Integer isTripleAgreement;
+    @Column(name = "is_triple_agreement",columnDefinition = "varchar(64) comment '是否签署三方协议'")
+    private String isTripleAgreement;
 
     @Column(name = "triple_agreement_company",columnDefinition = "varchar(64) comment '签署公司'")
     private String tripleAgreementCompany;

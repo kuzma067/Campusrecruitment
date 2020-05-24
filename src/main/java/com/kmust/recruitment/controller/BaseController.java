@@ -23,25 +23,8 @@ public class BaseController {
 	 * @return 当前登录的用户的id
 	 */
 	protected Integer getUidFromSession(HttpSession session) {
-		return Integer.valueOf(session.getAttribute("uid").toString());
-	}
-
-	/**
-	 * 从Session中获取当前登录的管理员的id
-	 * @param session Session对象
-	 * @return 当前登录的管理员的id
-	 */
-	protected Integer getRidFromSession(HttpSession session) {
-		return Integer.valueOf(session.getAttribute("rid").toString());
-	}
-
-	/**
-	 * 从Session中获取当前项目的noPid
-	 * @param session Session对象
-	 * @return 当前项目的noPid
-	 */
-	protected Integer getNoPidFromSession(HttpSession session) {
-		return Integer.valueOf(session.getAttribute("noPid").toString());
+		Integer result = (Integer) session.getAttribute("uid");
+		return result;
 	}
 
 	/**

@@ -17,11 +17,15 @@ public class TUserWorkServiceTest {
     @Test
     public void save(){
         TUserWork.TUserWorkBuilder builder = TUserWork.builder();
-        builder.expectedCompany("alibaba").expectedPosition("软件工程师").expectedSalary("12000")
-                .expectedTime("965").expectedWork("Java开发工程师").isTripleAgreement(1).createdTime(new Date())
-                .createdUser("admin").nowCompany("新浪").reason("无").uid(1).tripleAgreementCompany("新浪");
+        builder.expectedCompany("alibaba").expectedPosition("软件工程师").expectedSalary("15000")
+                .expectedTime("965").expectedWork("前端工程师").isTripleAgreement("是").createdTime(new Date())
+                .createdUser("admin").nowCompany("网易").reason("无").uid(2).tripleAgreementCompany("新浪");
         TUserWork tUserWork = builder.build();
         tUserWorkService.save(tUserWork);
         System.out.println(tUserWorkService.findAll());
+    }
+    @Test
+    public void findAll(){
+        System.out.println(tUserWorkService.findExcelVo());
     }
 }

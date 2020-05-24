@@ -73,6 +73,9 @@ public class TUser {
     @Column(columnDefinition = "varchar(64) comment '班级'")
     private String grade;
 
+    @Column(columnDefinition = "varchar(64) comment '系'")
+    private String dept;
+
     @Column(columnDefinition = "varchar(64) comment '学号'")
     private String number;
 
